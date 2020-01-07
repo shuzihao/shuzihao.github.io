@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>雨滴</title>
+  </head>
+  <body>
+    <div class="hy-main" id="test">
+      <div class="yudi"></div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    let main = document.getElementById('test');
+    let initNumber = 0;
+    for (let i = 1; i < 30; i++) {
+      let left = Math.floor(Math.random() * 5 + 2);
+      let delay = Math.floor(Math.random() * 5 + 2);
+      initNumber += left;
+      let div = document.createElement('div');
+      div.className = 'yudi';
+      div.style.left = initNumber + '%';
+      div.style.top = left + '%';
+      div.style.animationDelay = delay / 10 + 's';
+      main.appendChild(div);
+    }
+  </script>
+  <style type="text/css">
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    .hy-main {
+      height: 100%;
+      padding: 50px;
+      background-color: #f2f2f2;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .yudi {
+      position: absolute;
+      opacity: 0;
+      animation: down 1s cubic-bezier(0.44, 0.01, 0.37, 0.88) infinite;
+
+      /* 落雨 */
+      width: 8px;
+      height: 15px;
+      background-color: aqua;
+      clip-path: ellipse(10% 30% at 50% 50%);
+      transform: scale(3);
+    }
+    @keyframes down {
+      0% {
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(10px, 100vh, -10px);
+      }
+    }
+  </style>
+</html>
